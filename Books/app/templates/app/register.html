@@ -1,0 +1,67 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+
+<h2>{{ title }}</h2>
+<div class="row">
+    <div class="col-md-8">
+        <section id="loginForm">
+            <form action="." method="post" class="form-horizontal">
+                {% csrf_token %}
+                <hr/>
+                <div class="form-group">
+                    <div class="field-validation-error">
+                        {{form.username.errors}}
+                    </div>
+                    <label for="{{form.username.id_for_label}}" class="col-md-2 control-label">User name</label>
+                    <div class="col-md-10">
+                        {{form.username}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="field-validation-error">
+                        {{form.email.errors}}
+                    </div>
+                    <label for="{{form.email.id_for_label}}" class="col-md-2 control-label">Email</label>
+                    <div class="col-md-10">
+                        {{form.email}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="field-validation-error">
+                        {{form.password.errors}}
+                    </div>
+                    <label for="{{form.password.id_for_label}}" class="col-md-2 control-label">Password</label>
+                    <div class="col-md-10">
+                        {{form.password}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="field-validation-error">
+                        {{form.passwordconfirm.errors}}
+                    </div>
+                    <label for="{{form.passwordconform.id_for_label}}" class="col-md-2 control-label">Confirm</label>
+                    <div class="col-md-10">
+                        {{form.passwordconfirm}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="hidden" name="next" value="/" />
+                        <input type="submit" value="Register" class="btn btn-default" />
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+    {% load staticfiles %}
+<script src="{% static 'app/scripts/jquery.validate.min.js' %}"></script>
+
+{% endblock %}
